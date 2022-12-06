@@ -3,7 +3,7 @@
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
 from platform import system
-from jsh.version import __VERSION__
+from jsh-py3.version import __VERSION__
 
 
 class NoseTestCommand(TestCommand):
@@ -27,14 +27,14 @@ if system() == 'Darwin':
     INSTALL_REQUIRES.append('readline')
 
 setup(
-    name='jsh',
+    name='jsh-py3',
     version=__VERSION__,
     description='Junos-like shell library for Python',
-    author='Ocado Technology',
-    author_email='code@ocado.com',
+    author='Anastasia Mayer',
+    author_email='ana@missingtextures.net',
     long_description=open('README.rst').read(),
-    url='https://github.com/ocadotechnology/jsh/',
-    packages=['jsh'],
+    url='https://github.com/A-c0rN/jsh-py3/',
+    packages=['jsh-py3'],
     install_requires=INSTALL_REQUIRES,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
