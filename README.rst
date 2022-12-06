@@ -1,8 +1,8 @@
 =================================
-jsh-py3 - a Junos-style CLI library, Made for Python3 by fatihusta
+jsh_py3 - a Junos-style CLI library, Made for Python3 by fatihusta
 =================================
 
-**JSH-PY3** is a Junos-inspired CLI library for your Python apps.
+**jsh_py3** is a Junos-inspired CLI library for your Python apps.
 If you've ever logged into a Junos_ device, you'll know how good the CLI is.
 It offers:
 
@@ -10,13 +10,13 @@ It offers:
 - help by pressing "?" at any point
 - completion on pressing either space, tab or enter
 
-JSH-PY3 attempts to reproduce some of these features (and others) in a Python library
+jsh_py3 attempts to reproduce some of these features (and others) in a Python library
 based on Readline, to allow you to build better quality CLIs for your apps.
 
 Installation
 ============
 
-Install from PyPI using ``pip install jsh-py3``.
+Install from PyPI using ``pip install jsh_py3``.
 
 Basic Usage
 ===========
@@ -27,32 +27,32 @@ just an ``exit`` command, you would define it like this:
 
 .. code-block:: python
 
-    import jsh-py3
+    import jsh_py3
 
     layout = {
-        'exit': jsh-py3.exit,
+        'exit': jsh_py3.exit,
     }
 
-    jsh-py3.run(layout)
+    jsh_py3.run(layout)
 
-``jsh-py3.run`` is a shortcut for the following:
+``jsh_py3.run`` is a shortcut for the following:
 
 .. code-block:: python
 
-    cli = jsh-py3.JSH(layout)
+    cli = jsh_py3.JSH(layout)
 
     while True:
         try:
             cli.read_and_execute()
-        except jsh-py3.JSHError as err:
+        except jsh_py3.JSHError as err:
             print err
         except EOFError:
             break
 
 This creates a basic layout with a single available command (``exit``), passes
-it to an instance ``jsh-py3.JSH``, and starts an infinite loop, using the ``read_and_execute``
-method of the ``JSH-PY3`` CLI object to interact with the user. For more control
-over this loop, you should write your own instead of using ``jsh-py3.run``.
+it to an instance ``jsh_py3.JSH``, and starts an infinite loop, using the ``read_and_execute``
+method of the ``jsh_py3`` CLI object to interact with the user. For more control
+over this loop, you should write your own instead of using ``jsh_py3.run``.
 
 This provides a CLI that looks like the following:
 

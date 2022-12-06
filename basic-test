@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import jsh-py3
+import jsh_py3
 
 
 def test_command(*args, **kwargs):
@@ -9,68 +9,68 @@ def test_command(*args, **kwargs):
 
 
 def ping(*args, **kwargs):
-    print('Ping!')
+    print("Ping!")
     print(args)
     print(kwargs)
 
 
 layout = {
-    'help': {
-        '?': 'Show help',
-        None: jsh-py3.show_commands,
+    "help": {
+        "?": "Show help",
+        None: jsh_py3.show_commands,
     },
-    'quit': {
-        '?': 'Quit',
-        None: jsh-py3.exit,
+    "quit": {
+        "?": "Quit",
+        None: jsh_py3.exit,
     },
-    'test': {
-        '?': 'Test something',
+    "test": {
+        "?": "Test something",
         str: {
-            '?': ('thing', 'Must be an integer'),
+            "?": ("thing", "Must be an integer"),
             None: test_command,
-            '_validate': jsh-py3.validate_int,
-            '_kwarg': True,
+            "_validate": jsh_py3.validate_int,
+            "_kwarg": True,
             str: {
-                '?': ('thing', 'Must be in (0..200)'),
+                "?": ("thing", "Must be in (0..200)"),
                 None: test_command,
-                '_validate': jsh-py3.validate_range(0, 200),
-                'bob': {
-                    '?': 'Bob',
+                "_validate": jsh_py3.validate_range(0, 200),
+                "bob": {
+                    "?": "Bob",
                     None: test_command,
                     str: {
-                        '?': ('yet', 'Must be one of a, b or c'),
-                        '_validate': jsh-py3.validate_in(['a', 'b', 'c']),
+                        "?": ("yet", "Must be one of a, b or c"),
+                        "_validate": jsh_py3.validate_in(["a", "b", "c"]),
                         None: test_command,
-                        '_kwarg': 'bobby',
+                        "_kwarg": "bobby",
                     },
                 },
             },
         },
     },
-    'ping': {
-        '?': 'Ping a destination',
+    "ping": {
+        "?": "Ping a destination",
         str: {
-            '?': ('host', 'Host to ping'),
+            "?": ("host", "Host to ping"),
             None: ping,
-            '_kwarg': 'host',
+            "_kwarg": "host",
         },
-        'size': {
-            '?': 'Size of request packets',
+        "size": {
+            "?": "Size of request packets",
             str: {
-                '?': 'size',
-                '_kwarg': 'size',
-                '_option': True,
+                "?": "size",
+                "_kwarg": "size",
+                "_option": True,
             },
         },
-        'ttl': {
-            '?': 'IP time-to-live value',
+        "ttl": {
+            "?": "IP time-to-live value",
             str: {
-                '?': 'ttl',
-                '_kwarg': True,
-                '_option': True,
+                "?": "ttl",
+                "_kwarg": True,
+                "_option": True,
             },
         },
     },
 }
 
-jsh-py3.run(layout)
+jsh_py3.run(layout)

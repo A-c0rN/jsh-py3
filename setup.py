@@ -1,57 +1,34 @@
-"""Setup for JSH"""
-
+import os
 from setuptools import setup
-from setuptools.command.test import test as TestCommand
-from platform import system
-from jsh-py3.version import __VERSION__
 
+with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
+    README = readme.read()
 
-class NoseTestCommand(TestCommand):
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = []
-        self.test_suite = True
-
-    def run_tests(self):
-        # Run nose ensuring that argv simulates running nosetests directly
-        import nose
-        import os
-        os.environ['COVERAGE_PROCESS_START'] = '.coveragerc'
-        nose.run_exit(argv=['nosetests'])
-
-INSTALL_REQUIRES = [
-    'six',
-]
-
-if system() == 'Darwin':
-    INSTALL_REQUIRES.append('readline')
+# allow setup.py to be run from any path
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='jsh-py3',
-    version=__VERSION__,
-    description='Junos-like shell library for Python',
-    author='Anastasia Mayer',
-    author_email='ana@missingtextures.net',
-    long_description=open('README.rst').read(),
-    url='https://github.com/A-c0rN/jsh-py3/',
-    packages=['jsh-py3'],
-    install_requires=INSTALL_REQUIRES,
+    name="jsh_py3",
+    packages=["jsh_py3"],
+    version="0.1.0",
+    description="Junos-like shell library for Python 3",
+    author="A-c0rN",
+    author_email="acrn@gwes-eas.network",
+    license="ODbL-1.0",
+    install_requires=["jsh_py3"],
+    long_description=README,
+    url="https://github.com/A-c0rN/jsh_py3",
+    keywords="audio sound eas alerting emergency-alert-system",
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: Apache Software License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.8',
-        'Topic :: Software Development :: Libraries :: Python Modules',
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.2",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.8",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    tests_require=[
-        'coverage',
-        'nose',
-        'pexpect < 4.0',
-    ],
-    cmdclass={'test': NoseTestCommand},
 )

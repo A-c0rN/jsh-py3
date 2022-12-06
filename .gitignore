@@ -5,7 +5,7 @@ deb_dist
 MANIFEST
 dist
 *.egg-info
-jsh-*.tar.gz
+jsh_py3-*.tar.gz
 
 .*.sw*
 _build
