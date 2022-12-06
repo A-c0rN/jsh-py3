@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import jsh
+import jsh-py3
 
 
 def test_command(*args, **kwargs):
@@ -17,29 +17,29 @@ def ping(*args, **kwargs):
 layout = {
     'help': {
         '?': 'Show help',
-        None: jsh.show_commands,
+        None: jsh-py3.show_commands,
     },
     'quit': {
         '?': 'Quit',
-        None: jsh.exit,
+        None: jsh-py3.exit,
     },
     'test': {
         '?': 'Test something',
         str: {
             '?': ('thing', 'Must be an integer'),
             None: test_command,
-            '_validate': jsh.validate_int,
+            '_validate': jsh-py3.validate_int,
             '_kwarg': True,
             str: {
                 '?': ('thing', 'Must be in (0..200)'),
                 None: test_command,
-                '_validate': jsh.validate_range(0, 200),
+                '_validate': jsh-py3.validate_range(0, 200),
                 'bob': {
                     '?': 'Bob',
                     None: test_command,
                     str: {
                         '?': ('yet', 'Must be one of a, b or c'),
-                        '_validate': jsh.validate_in(['a', 'b', 'c']),
+                        '_validate': jsh-py3.validate_in(['a', 'b', 'c']),
                         None: test_command,
                         '_kwarg': 'bobby',
                     },
@@ -73,4 +73,4 @@ layout = {
     },
 }
 
-jsh.run(layout)
+jsh-py3.run(layout)
