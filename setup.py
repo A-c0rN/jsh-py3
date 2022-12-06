@@ -1,7 +1,7 @@
 import os
 from setuptools import setup
 
-with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
+with open("README.rst") as readme:
     README = readme.read()
 
 # allow setup.py to be run from any path
@@ -15,8 +15,9 @@ setup(
     author="A-c0rN",
     author_email="acrn@gwes-eas.network",
     license="ODbL-1.0",
-    install_requires=["jsh_py3"],
+    install_requires=["six", "readline"],
     long_description=README,
+    long_description_content_type="text/x-rst",
     url="https://github.com/A-c0rN/jsh_py3",
     keywords="audio sound eas alerting emergency-alert-system",
     classifiers=[

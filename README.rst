@@ -1,6 +1,6 @@
-=================================
+==================================================================
 jsh_py3 - a Junos-style CLI library, Made for Python3 by fatihusta
-=================================
+==================================================================
 
 **jsh_py3** is a Junos-inspired CLI library for your Python apps.
 If you've ever logged into a Junos_ device, you'll know how good the CLI is.
